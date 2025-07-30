@@ -6,10 +6,22 @@ using System.Threading.Tasks;
 
 namespace Demo
 {
-    internal static class Helper
+    internal static class Helper<T> 
     {
+        public static int LinarSearch(T[] Arr, T Value)
+        {
+            if (Arr?.Length > 0 && Value is not null)
+            {
+                for (int i = 0; i < Arr.Length; i++)
+                {
+                    if (Value.Equals(Arr[i]))
+                        return i;
+                }
+            }
+            return -1;
+        }
 
-        public static void Swap<T>(ref T x, ref T y)/* where T : struct */
+        public static void Swap(ref T x, ref T y)/* where T : struct */
         {
             Console.WriteLine("=== SWAP ===");
             T temp = x;
@@ -17,7 +29,7 @@ namespace Demo
             y = temp;
         }
 
-        public static void Print<T>(string Name)
+        public static void Print/*<T>*/(string Name)
         {
             Console.WriteLine($"Hello {Name}");
         }
