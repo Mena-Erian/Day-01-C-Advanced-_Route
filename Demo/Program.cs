@@ -137,27 +137,36 @@
             /// // Id = 10,Name = Mena, Salary = 6000
             #endregion
 
+            #region Sort
             //double[] Numbers = [9, 4, 10, 6, 2, 8, 5, 1, 3, 7];
 
             //Helper<double>.BubbleSort(Numbers);
             //foreach (int i in Numbers)
             //{
             //    Console.WriteLine(i);
-            //}
+            //} 
+            #endregion
 
-            Employee[] employees = {
-                new Employee(10, "Mena", 8_000),
-                new Employee(20, "Hamada", 8_000),
-                new Employee(30, "Omnia", 5_000),
-                new Employee(40, "Shref", 2_000),
-                new Employee(50, "Adel", 9_000),
-            };
-
-            //Helper<Employee>.BubbleSort(employees);
-            //Helper<Employee>.BubbleSort(employees, new EmployeeComparerBySalary());
-            Helper<Employee>.BubbleSort(employees, new EmployeeComparerByName());
-            foreach (Employee employee in employees)
-                Console.WriteLine(employee);
+            #region Genaric Sort - Example03
+            /// Employee[] employees = {
+            ///     new Employee(10, "Mena", 8_000),
+            ///     new Employee(20, "Hamada", 8_000),
+            ///     new Employee(30, "Omnia", 5_000),
+            ///     new Employee(40, "Shref", 2_000),
+            ///     new Employee(50, "Adel", 9_000),
+            /// };
+            /// 
+            /// //Helper<Employee>.BubbleSort(employees);
+            /// //Helper<Employee>.BubbleSort(employees, new EmployeeComparerBySalary());
+            /// //Helper<Employee>.BubbleSort(employees, new EmployeeComparerByName());
+            /// Helper<Employee>.BubbleSort(employees, delegate (Employee x, Employee y)
+            /// {
+            ///     return x.Id.CompareTo(y.Id) == 1;
+            /// });
+            /// Helper<Employee>.BubbleSort(employees, (Employee x, Employee y) => x.Salary.CompareTo(y.Salary) == -1);
+            /// foreach (Employee employee in employees)
+            ///     Console.WriteLine(employee); 
+            #endregion
         }
     }
 }
