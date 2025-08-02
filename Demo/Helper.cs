@@ -9,8 +9,21 @@ namespace Demo
     internal static class Helper<T> where T : IComparable<T>
         // T must be Class or Struct Implementing the Built-in interface "IComparable"
     {
-
        
+        public static void BubbleSort(T[] Arr, IComparer<T> comparer)
+        {
+            if (Arr is null || Arr.Length == 0) return;
+
+            for (int i = 0; i < Arr.Length /*6*/; i++) // i = 0
+            {
+                for (int j = 0; j < Arr.Length - 1 - i /*5*/; j++) // j = 2
+                {
+                    //         > 
+                    if (comparer.Compare(Arr[j], Arr[j + 1]) == 1)
+                        Swap(ref Arr[j], ref Arr[j + 1]);
+                }
+            }
+        }
         public static void BubbleSort(T[] Arr)
         {
             if (Arr is null || Arr.Length == 0) return;
@@ -21,7 +34,7 @@ namespace Demo
                 {
                     //         > 
                     if (Arr[j].CompareTo(Arr[j + 1]) == 1)
-                       Swap(ref Arr[j], ref Arr[j + 1]);
+                        Swap(ref Arr[j], ref Arr[j + 1]);
                 }
             }
         }

@@ -153,7 +153,9 @@
                 new Employee(50, "Adel", 9_000),
             };
 
-            Helper<Employee>.BubbleSort(employees);
+            //Helper<Employee>.BubbleSort(employees);
+            //Helper<Employee>.BubbleSort(employees, new EmployeeComparerBySalary());
+            Helper<Employee>.BubbleSort(employees, new EmployeeComparerByName());
             foreach (Employee employee in employees)
                 Console.WriteLine(employee);
         }

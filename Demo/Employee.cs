@@ -126,5 +126,22 @@ namespace Demo
             return HashCode.Combine(obj.Id);
         }
     }
+    class EmployeeComparerBySalary : IComparer<Employee>
+    {
+        public int Compare(Employee? x, Employee? y)
+        {
+            //if (x == null) return 1;
+            //return x.Salary.CompareTo(y.Salary);
+            return x?.Salary.CompareTo(y?.Salary ?? 0) ?? (y is null ? 0 : -1);
+        }
+    }
+    class EmployeeComparerByName : IComparer<Employee>
+    {
+        public int Compare(Employee? x, Employee? y)
+        {
+
+            return x?.Name?.CompareTo(y?.Name) ?? (y is null ? 0 : -1);
+        }
+    }
 
 }
