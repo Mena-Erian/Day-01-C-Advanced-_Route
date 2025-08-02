@@ -104,7 +104,6 @@
             #endregion
             #endregion
 
-
             #region Equality (==, Equals) && GetHashCode
             /// // Why Value Types (struct, enum,int, ...)  inheret from valuetype not from object direct?
             /// // becouse value type override 2 methods in Object => Equals(), GetHashCode() to be based on State(value)
@@ -138,6 +137,25 @@
             /// // Id = 10,Name = Mena, Salary = 6000
             #endregion
 
+            //double[] Numbers = [9, 4, 10, 6, 2, 8, 5, 1, 3, 7];
+
+            //Helper<double>.BubbleSort(Numbers);
+            //foreach (int i in Numbers)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            Employee[] employees = {
+                new Employee(10, "Mena", 8_000),
+                new Employee(20, "Hamada", 8_000),
+                new Employee(30, "Omnia", 5_000),
+                new Employee(40, "Shref", 2_000),
+                new Employee(50, "Adel", 9_000),
+            };
+
+            Helper<Employee>.BubbleSort(employees);
+            foreach (Employee employee in employees)
+                Console.WriteLine(employee);
         }
     }
 }
