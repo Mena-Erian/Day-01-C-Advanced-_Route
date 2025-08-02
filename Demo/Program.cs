@@ -60,27 +60,50 @@
             /// else
             ///     Console.WriteLine("NOT EQUAL");
 
-            Employee[] employees = {
-                new Employee(10,"Mena",8_000),
-                new Employee(20,"Hamada",8_000),
-                new Employee(30,"Omnia",5_000),
-                new Employee(40,"Shref",2_000),
-                new Employee(50,"Adel",9_000),
-            };
-
-            //int index = Helper<Employee>.LinarSearch(employees, new Employee(20, "Hamada", 8_000));
-            //int index = Helper<Employee>.LinarSearch(employees, new Employee() { Name = "Hamda" });
-
-            //int index = Helper<Employee>.LinarSearch(employees,
-            //                                     new Employee() { Name = "Hamada" },
-            //                                  new EmployeeEqualityComparerByName());
-
-            int index = Helper<Employee>.LinarSearch(employees,
-                                                 new Employee() { Id = 40 },
-                                              new EmployeeEqualityComparerById());
-
-            Console.WriteLine($"index = {index}");
+            #region Generic Search
+            /// Employee[] employees = {
+            ///     new Employee(10,"Mena",8_000),
+            ///     new Employee(20,"Hamada",8_000),
+            ///     new Employee(30,"Omnia",5_000),
+            ///     new Employee(40,"Shref",2_000),
+            ///     new Employee(50,"Adel",9_000),
+            /// };
+            /// 
+            /// //int index = Helper<Employee>.LinarSearch(employees, new Employee(20, "Hamada", 8_000));
+            /// //int index = Helper<Employee>.LinarSearch(employees, new Employee() { Name = "Hamda" });
+            /// 
+            /// //int index = Helper<Employee>.LinarSearch(employees,
+            /// //                                     new Employee() { Name = "Hamada" },
+            /// //                                  new EmployeeEqualityComparerByName());
+            /// 
+            /// //int index = Helper<Employee>.LinarSearch(employees,
+            /// //                                     new Employee() { Id = 40 },
+            /// //                                  new EmployeeEqualityComparerById());
+            /// 
+            /// Func<Employee, Employee, bool> equals = delegate (Employee x, Employee y)
+            /// {
+            /// 
+            ///     return x == y;
+            /// };
+            /// 
+            /// //int index = Helper<Employee>.LinarSearch(employees,
+            /// //new Employee() { Salary = 2000 },
+            /// //delegate (Employee x, Employee y)
+            /// //{
+            /// //    return x.Salary == y.Salary;
+            /// //}
+            /// //);
+            /// 
+            /// int index = Helper<Employee>.LinarSearch(employees,
+            ///  new Employee() { Salary = 2000 },
+            ///  (Employee x, Employee y) => x.Salary == y.Salary
+            /// );
+            /// 
+            /// 
+            /// Console.WriteLine($"index = {index}"); 
             #endregion
+            #endregion
+
 
             #region Equality (==, Equals) && GetHashCode
             /// // Why Value Types (struct, enum,int, ...)  inheret from valuetype not from object direct?

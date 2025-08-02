@@ -8,6 +8,7 @@ namespace Demo
 {
     internal static class Helper<T>
     {
+        delegate bool FunCDelgete(T X, T Y);
         public static bool isPrime(int number)
         {
             if (number <= 1) return false;
@@ -48,6 +49,21 @@ namespace Demo
                 {
                     //if (Value.Equals(Arr[i]))
                     if (equalityComparer.Equals(Value, Arr[i]))
+                        return i;
+                }
+            }
+            return -1;
+        }
+        //                                              built in delegete
+        public static int LinarSearch(T[] Arr, T Value, Func<T, T, bool> equals)
+        {
+           
+            if (Arr?.Length > 0 && Value is not null)
+            {
+                for (int i = 0; i < Arr.Length; i++)
+                {
+                    //if (Value.Equals(Arr[i]))
+                    if (equals(Value, Arr[i]))
                         return i;
                 }
             }
