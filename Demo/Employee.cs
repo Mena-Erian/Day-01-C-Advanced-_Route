@@ -21,12 +21,28 @@ namespace Demo
         public override bool Equals(object? obj)
         {
             Employee? other = (Employee?)obj; // Unsafe Casting: Compiler Can't Enforce Type Safety [My Throw Execption "InvalidCastException"]
-
             if (other == null) return false;
 
             //return base.Equals(obj); // if using hashtable > should override
             return (this.Id == other.Id) && (this.Name == other.Name) && (this.Salary == other.Salary);
-            
+            ///----------------------------------------------------------
+
+            //Employee? other;
+
+
+            // 1. is Operator
+            /// if (obj is Employee other)
+            /// {
+            ///     return (this.Id == other.Id) && (this.Name == other.Name) && (this.Salary == other.Salary);
+            /// }
+            /// return false;
+
+
+            // 2. as Operator
+            /// Employee? other = obj as Employee; // return null if casting is fail
+            /// if (other == null) return false;
+            /// return (this.Id == other.Id) && (this.Name == other.Name) && (this.Salary == other.Salary);
+
         }
 
         public override int GetHashCode()
@@ -49,7 +65,7 @@ namespace Demo
             /// return hashValue;
 
             //return base.GetHashCode(); // if using hashtable > should override
-            return HashCode.Combine(this.Id,this.Name, this.Salary); // Now Generate based Based in State
+            return HashCode.Combine(this.Id, this.Name, this.Salary); // Now Generate based Based in State
 
         }
 
