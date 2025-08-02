@@ -138,13 +138,13 @@
             #endregion
 
             #region Sort
-            //double[] Numbers = [9, 4, 10, 6, 2, 8, 5, 1, 3, 7];
-
-            //Helper<double>.BubbleSort(Numbers);
-            //foreach (int i in Numbers)
-            //{
-            //    Console.WriteLine(i);
-            //} 
+            /// double[] Numbers = [9, 4, 10, 6, 2, 8, 5, 1, 3, 7];
+            /// 
+            /// Helper<double>.BubbleSort(Numbers);
+            /// foreach (int i in Numbers)
+            /// {
+            ///     Console.WriteLine(i);
+            /// }
             #endregion
 
             #region Genaric Sort - Example03

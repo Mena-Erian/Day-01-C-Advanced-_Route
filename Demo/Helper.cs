@@ -6,9 +6,31 @@ using System.Threading.Tasks;
 
 namespace Demo
 {
-    internal static class Helper<T> where T : IComparable<T>
+    internal static class Helper<T> where T : /*class,*/ IComparable<T>  /*,new()*/ /*, IEquatable<T>,ICloneable*/
         // T must be Class or Struct Implementing the Built-in interface "IComparable"
+
+        /// Primary Constraint [0: 1]    
+        /// 1.General Primary Constarint
+        ///     class       => T Must Be Class
+        ///     struct      => T Must Be Struct
+        ///     notnull     => T Must be Not Nullable (C# 8.0)
+        ///     default (should declare in Method) => 
+        ///     unmanged    =>
+        /// 2.Special Primary Constarint (User-Defined Class (Except Sealed))
+        ///     Enum        => T Must Be Enum (C# 7.3)
+        ///     Point       => T Must Be Point Or Another Class Inherits From Point
+
+        /// Secondary Constraint (Interface Constarint) [0: M]
+        /// IComparable<T>
+        /// T Must Be Class/Struct Implementing IComparable
+
+        /// Parameterless Constructor Constraint [0:1]
+        /// T Must be Datatype Having Accessable[Non0Private] parmeterless Constructor
+        /// Till C# 12.0 Only One Constructor Constraing
+        /// Can't Use new() [Constructor Constraint] with struct [Special Primary Constraint]
+
     {
+        //public static T Sum()
         public static void BubbleSort(T[] Arr, Func<T, T, bool> comparer)
         {
             if (Arr is null || Arr.Length == 0) return;
