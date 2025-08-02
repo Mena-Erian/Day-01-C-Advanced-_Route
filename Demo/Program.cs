@@ -69,7 +69,16 @@
             };
 
             //int index = Helper<Employee>.LinarSearch(employees, new Employee(20, "Hamada", 8_000));
-            int index = Helper<Employee>.LinarSearch(employees, new Employee() { Name = "Hamda" });
+            //int index = Helper<Employee>.LinarSearch(employees, new Employee() { Name = "Hamda" });
+
+            //int index = Helper<Employee>.LinarSearch(employees,
+            //                                     new Employee() { Name = "Hamada" },
+            //                                  new EmployeeEqualityComparerByName());
+
+            int index = Helper<Employee>.LinarSearch(employees,
+                                                 new Employee() { Id = 40 },
+                                              new EmployeeEqualityComparerById());
+
             Console.WriteLine($"index = {index}");
             #endregion
 

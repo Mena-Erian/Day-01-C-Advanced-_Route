@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Demo
 {
-    internal static class Helper<T> 
+    internal static class Helper<T>
     {
         public static bool isPrime(int number)
         {
@@ -39,7 +39,20 @@ namespace Demo
             }
             return -1;
         }
-
+        //                                              Startige Design pattern
+        public static int LinarSearch(T[] Arr, T Value, IEqualityComparer<T> equalityComparer)
+        {
+            if (Arr?.Length > 0 && Value is not null)
+            {
+                for (int i = 0; i < Arr.Length; i++)
+                {
+                    //if (Value.Equals(Arr[i]))
+                    if (equalityComparer.Equals(Value, Arr[i]))
+                        return i;
+                }
+            }
+            return -1;
+        }
         public static void Swap(ref T x, ref T y)/* where T : struct */
         {
             Console.WriteLine("=== SWAP ===");
