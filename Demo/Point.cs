@@ -16,6 +16,14 @@ namespace Demo
             X = x;
             Y = y;
         }
+        public static bool operator ==(Point x, Point y)
+        {
+            return x.Equals(y);
+        }
+        public static bool operator !=(Point x, Point y)
+        {
+            return !x.Equals(y);
+        }
         public override string ToString() => $"({X},{Y})";
     }
 }

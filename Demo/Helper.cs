@@ -6,8 +6,27 @@ using System.Threading.Tasks;
 
 namespace Demo
 {
-    internal static class Helper<T> 
+    internal static class Helper<T>
     {
+        public static bool isPrime(int number)
+        {
+            if (number <= 1) return false;
+            if (number == 2) return true;
+            if (number % 2 == 0) return false;
+            double dividedResult = default(double);
+            //for (int i = 2; i <= number; i++)
+            //{
+            //    dividedResult = number / (double)i;
+            //    if (dividedResult % 1 ==0) return false;
+            //}
+
+            for (int i = 3; i <= Math.Sqrt(number); i += 2)
+            {
+                if (number % i == 0)
+                    return false;
+            }
+            return true;
+        }
         public static int LinarSearch(T[] Arr, T Value)
         {
             if (Arr?.Length > 0 && Value is not null)
@@ -33,39 +52,39 @@ namespace Demo
         {
             Console.WriteLine($"Hello {Name}");
         }
+        ///--------------------------------------------------------
+        public static void Swap(ref object x, ref object y)
+        {
+            //int NumberX  = (int)x; // UnBoxing
+            Console.WriteLine("=== SWAP ===");
+            object temp = x;
+            x = y;
+            y = temp;
+            // Boxing && UnBoxing
+            // UnSafe Casting
+            // any type Can to be Object
+        }
 
-        /// public static void Swap(ref object x, ref object y)
-        /// {
-        ///     //int NumberX  = (int)x; // UnBoxing
-        ///     Console.WriteLine("=== SWAP ===");
-        ///     object temp = x;
-        ///     x = y;
-        ///     y = temp;
-        ///     // Boxing && UnBoxing
-        ///     // UnSafe Casting
-        ///     // any type Can to be Object
-        /// }
-
-        /// public static void Swap(ref int x, ref int y)
-        /// {
-        ///     Console.WriteLine("=== SWAP ===");
-        ///     int temp = x;
-        ///     x = y;
-        ///     y = temp;
-        /// }
-        /// public static void Swap(ref double   x, ref double y)
-        /// {
-        ///     Console.WriteLine("=== SWAP ===");
-        ///     double temp = x;
-        ///     x = y;
-        ///     y = temp;
-        /// }
-        /// public static void Swap(ref Point x, ref Point y)
-        /// {
-        ///     Console.WriteLine("=== SWAP ===");
-        ///     Point temp = x;
-        ///     x = y;
-        ///     y = temp;
-        /// }
+        public static void Swap(ref int x, ref int y)
+        {
+            Console.WriteLine("=== SWAP ===");
+            int temp = x;
+            x = y;
+            y = temp;
+        }
+        public static void Swap(ref double x, ref double y)
+        {
+            Console.WriteLine("=== SWAP ===");
+            double temp = x;
+            x = y;
+            y = temp;
+        }
+        public static void Swap(ref Point x, ref Point y)
+        {
+            Console.WriteLine("=== SWAP ===");
+            Point temp = x;
+            x = y;
+            y = temp;
+        }
     }
 }

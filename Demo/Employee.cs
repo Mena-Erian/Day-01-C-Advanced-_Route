@@ -21,17 +21,41 @@ namespace Demo
         public override bool Equals(object? obj)
         {
             Employee? other = (Employee?)obj; // Unsafe Casting: Compiler Can't Enforce Type Safety [My Throw Execption "InvalidCastException"]
-            
-            if(other == null) return false;
-            
+
+            if (other == null) return false;
+
+            //return base.Equals(obj); // if using hashtable > should override
             return (this.Id == other.Id) && (this.Name == other.Name) && (this.Salary == other.Salary);
+            
         }
 
         public override int GetHashCode()
         {
             //return base.GetHashCode(); // Should Implement it to Generate Hash Code Based in State like Equal()
-        
+
+            //return HashCode.Combine(this.Id,this.Name, this.Salary); // Now Generate based Based in State
+
+            /// // not the best it make conflit if i h
+            /// Employee emp01 = new Employee(10, "Mena", 1000);
+            /// Employee emp02 = new Employee(1000, "Mena", 10);
+            /// // those it will return the same Value so it not valid for me
+            /// //return this.Id.GetHashCode() + this.Name?.GetHashCode() ?? default(int) + this.Salary.GetHashCode();
+            /// //return this.Id.GetHashCode() ^ this.Name?.GetHashCode() ?? default(int) ^ this.Salary.GetHashCode();
+
+            /// int hashValue = 11;
+            /// hashValue = (hashValue * 7) ^ /*+*/ Id.GetHashCode(); // 87
+            /// hashValue = (hashValue * 7) ^ /*+*/ Name?.GetHashCode() ?? default(int); // 609 + 41 = 650
+            /// hashValue = (hashValue * 7) ^ /*+*/ Salary.GetHashCode(); // 4550 + 1000 = 5550 
+            /// return hashValue;
+
+            //return base.GetHashCode(); // if using hashtable > should override
             return HashCode.Combine(this.Id,this.Name, this.Salary); // Now Generate based Based in State
+
+        }
+
+        public override string ToString()
+        {
+            return $"Id = {this.Id},Name = {this.Name}, Salary = {this.Salary}";
         }
 
         /// public static bool operator ==(Employee left, Employee right)

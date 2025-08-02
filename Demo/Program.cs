@@ -36,6 +36,7 @@
             /// Console.WriteLine($"P02 = {P02}"); 
             #endregion
 
+            #region Generic Search - Example 02
             /// int[] Numbers = { 54654665, 52, 656, 156,8, 4981, 3498, 3289, 238, 6298, 2, 3, 65, 8654 };
             /// 
             /// int result = Helper<int>.LinarSearch(Numbers, 8);
@@ -46,7 +47,7 @@
             /// //Employee E02 = new Employee(2, "any", 1000);
             /// 
             /// 
-            /// // E01.GetHashCode() by Default(With Class) Based on ref(ther Place in Heap)
+            /// // E01.GetHashCode() by Default(With Class) Based on ref(there Place in Heap)
             /// Console.WriteLine($"E01.GetHashCode() => {E01.GetHashCode()}");
             /// Console.WriteLine($"E02.GetHashCode() => {E02.GetHashCode()}");
             /// 
@@ -69,6 +70,41 @@
             /// 
             /// int index = Helper<Employee>.LinarSearch(employees, new Employee(20, "Hamada", 8_000));
             /// Console.WriteLine($"index = {index}");
+            #endregion
+
+            #region Equality (==, Equals) && GetHashCode
+            /// // Why Value Types (struct, enum,int, ...)  inheret from valuetype not from object direct?
+            /// // becouse value type override 2 methods in Object => Equals(), GetHashCode() to be based on State(value)
+            /// 
+            /// // Enum it inheret from Enum Class and Enum Class inheret from ValueType Class
+            /// 
+            /// Employee employee01 = new Employee(10, "Mena", 6_000);
+            /// Employee employee02 = new Employee(10, "Mena", 6_000);
+            /// 
+            /// //if (E01 == E02) // Ref By Defult (Class (ref Type))
+            /// if (employee01.Equals(employee02)) // State
+            ///     Console.WriteLine("EQUAL");
+            /// else
+            ///     Console.WriteLine("NOT EQUAL");
+            /// 
+            /// //int x = 10;
+            /// //Console.WriteLine(x.GetHashCode()); // 10 => valuetype so it will generated based on value
+            /// 
+            /// HashSet<Employee> employees = new HashSet<Employee>();
+            /// 
+            /// employees.Add(employee01);
+            /// employees.Add(employee02);
+            /// 
+            /// foreach (Employee employee in employees)
+            ///     Console.WriteLine(employee);  // if you don't override (Equals(),GetHashCode()) it will output the two event those have the same state    
+            /// /// Make Override, Output:                                  
+            /// // Id = 10,Name = Mena, Salary = 6000
+            /// 
+            /// /// don't Override, Output:
+            /// // Id = 10,Name = Mena, Salary = 6000
+            /// // Id = 10,Name = Mena, Salary = 6000
+            #endregion
+
         }
     }
 }
