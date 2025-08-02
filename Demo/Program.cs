@@ -60,16 +60,17 @@
             /// else
             ///     Console.WriteLine("NOT EQUAL");
 
-            /// Employee[] employees = {
-            ///     new Employee(10,"Mena",8_000),
-            ///     new Employee(20,"Hamada",8_000),
-            ///     new Employee(30,"Omnia",5_000),
-            ///     new Employee(40,"Shref",2_000),
-            ///     new Employee(50,"Adel",9_000),
-            /// };
-            /// 
-            /// int index = Helper<Employee>.LinarSearch(employees, new Employee(20, "Hamada", 8_000));
-            /// Console.WriteLine($"index = {index}");
+            Employee[] employees = {
+                new Employee(10,"Mena",8_000),
+                new Employee(20,"Hamada",8_000),
+                new Employee(30,"Omnia",5_000),
+                new Employee(40,"Shref",2_000),
+                new Employee(50,"Adel",9_000),
+            };
+
+            //int index = Helper<Employee>.LinarSearch(employees, new Employee(20, "Hamada", 8_000));
+            int index = Helper<Employee>.LinarSearch(employees, new Employee() { Name = "Hamda" });
+            Console.WriteLine($"index = {index}");
             #endregion
 
             #region Equality (==, Equals) && GetHashCode

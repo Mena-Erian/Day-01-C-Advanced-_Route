@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Demo
 {
-    internal class Employee
+    internal class Employee : IEquatable<Employee>
     {
         public int Id { get; set; }
         public string? Name { get; set; }
@@ -17,34 +17,7 @@ namespace Demo
             Name = name;
             Salary = salary;
         }
-
-        public override bool Equals(object? obj)
-        {
-            Employee? other = (Employee?)obj; // Unsafe Casting: Compiler Can't Enforce Type Safety [My Throw Execption "InvalidCastException"]
-            if (other == null) return false;
-
-            //return base.Equals(obj); // if using hashtable > should override
-            return (this.Id == other.Id) && (this.Name == other.Name) && (this.Salary == other.Salary);
-            ///----------------------------------------------------------
-
-            //Employee? other;
-
-
-            // 1. is Operator
-            /// if (obj is Employee other)
-            /// {
-            ///     return (this.Id == other.Id) && (this.Name == other.Name) && (this.Salary == other.Salary);
-            /// }
-            /// return false;
-
-
-            // 2. as Operator
-            /// Employee? other = obj as Employee; // return null if casting is fail
-            /// if (other == null) return false;
-            /// return (this.Id == other.Id) && (this.Name == other.Name) && (this.Salary == other.Salary);
-
-        }
-
+        public Employee() { }
         public override int GetHashCode()
         {
             //return base.GetHashCode(); // Should Implement it to Generate Hash Code Based in State like Equal()
@@ -72,6 +45,39 @@ namespace Demo
         public override string ToString()
         {
             return $"Id = {this.Id},Name = {this.Name}, Salary = {this.Salary}";
+        }
+
+        ///public override bool Equals(object? obj)
+        ///{
+        ///    Employee? other = (Employee?)obj; // Unsafe Casting: Compiler Can't Enforce Type Safety [My Throw Execption "InvalidCastException"]
+        ///    if (other == null) return false;
+        ///
+        ///    //return base.Equals(obj); // if using hashtable > should override
+        ///    return (this.Id == other.Id) && (this.Name == other.Name) && (this.Salary == other.Salary);
+        ///    ///----------------------------------------------------------
+        ///
+        ///    //Employee? other;
+        ///
+        ///
+        ///    // 1. is Operator
+        ///    /// if (obj is Employee other)
+        ///    /// {
+        ///    ///     return (this.Id == other.Id) && (this.Name == other.Name) && (this.Salary == other.Salary);
+        ///    /// }
+        ///    /// return false;
+        ///
+        ///
+        ///    // 2. as Operator
+        ///    /// Employee? other = obj as Employee; // return null if casting is fail
+        ///    /// if (other == null) return false;
+        ///    /// return (this.Id == other.Id) && (this.Name == other.Name) && (this.Salary == other.Salary);
+        ///
+        ///}
+
+        public bool Equals(Employee? other)
+        {
+            if (other == null) return false;
+            return (this.Id == other.Id) && (this.Name == other.Name) && (this.Salary == other.Salary);
         }
 
         /// public static bool operator ==(Employee left, Employee right)
