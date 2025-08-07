@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Assignment
 {
-    internal class Range<T> where T : IComparable<T>
+    internal class Range<T> where T : IComparable<T> 
     {
         public T Minimum { get; set; }
         public T Maximum { get; set; }
