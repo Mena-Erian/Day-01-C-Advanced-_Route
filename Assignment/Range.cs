@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Assignment
 {
-    internal class Range<T> where T : IComparable<T>, INumber<T>
+    internal class Range<T> where T : IComparable<T>
     {
         public T Minimum { get; set; }
         public T Maximum { get; set; }
-        public Range(T minimum  , T maximum)
+        public Range(T minimum, T maximum)
         {
             Minimum = minimum; // 5
             Maximum = maximum; // 10
@@ -27,10 +27,37 @@ namespace Assignment
             if ((min >= 0) && max <= 0) return true;
             return false;
         }
-
+        public T Length(Func<T, T, T> func)
+        {
+            return func(Maximum, Minimum);
+        }
         public T Length()
         {
-            return Maximum - Minimum;
+            return RangeExtensions.Length(this);
+        }
+
+    }
+
+    public static class RangeExtensions
+    {
+        internal static T Length<T>(this Range<T> range) where T : IComparable<T>
+        {
+            if (IsNumericType(typeof(T)))
+            {
+                return (dynamic)range.Maximum - (dynamic)range.Minimum;
+            }
+            throw new InvalidOperationException($"Type {typeof(T)} is not numeric use this `T Length(Func<T, T, T> func)`");
+        }
+
+        private static bool IsNumericType(Type type)
+        {
+            return Type.GetTypeCode(type) switch
+            {
+                TypeCode.Byte or TypeCode.SByte or TypeCode.UInt16 or TypeCode.UInt32 or TypeCode.UInt64
+                or TypeCode.Int16 or TypeCode.Int32 or TypeCode.Int64
+                or TypeCode.Decimal or TypeCode.Double or TypeCode.Single => true,
+                _ => false
+            };
         }
     }
 }
