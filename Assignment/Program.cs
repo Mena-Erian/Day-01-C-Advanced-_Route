@@ -33,6 +33,16 @@ namespace Assignment
             /// Helper.GetEvenNumbersList/*<int>*/(numbers).Print();
             #endregion
 
+            #region 5. Make Custom Generic List (FixedSizeList<T>)
+            /// FixedSizeList<int> fixedSizeList = new FixedSizeList<int>(5);
+            /// fixedSizeList.Add(11);
+            /// fixedSizeList.Add(22);
+            /// fixedSizeList.Add(33);
+            /// fixedSizeList.Add(44);
+            /// //fixedSizeList.Add(55); // Here will be throw exception
+            /// Console.WriteLine(fixedSizeList.Get(1));
+            #endregion
+
         }
     }
 }
