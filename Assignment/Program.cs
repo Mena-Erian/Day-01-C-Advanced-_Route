@@ -27,7 +27,12 @@ namespace Assignment
             /// Helper.Reverce(ref array);
             /// foreach (int item in array) Console.WriteLine(item); 
             #endregion
-        }
 
+            #region 4. Get Even Numbers From List
+            /// List<int> numbers = new List<int>([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+            /// Helper.GetEvenNumbersList/*<int>*/(numbers).Print();
+            #endregion
+
+        }
     }
 }
