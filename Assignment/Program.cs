@@ -43,6 +43,13 @@ namespace Assignment
             /// Console.WriteLine(fixedSizeList.Get(1));
             #endregion
 
+            #region 6. Find The First non-repeated Character
+            //string str = "Mohamad";
+            string str = "aabdsbcc5";
+            Helper.GetNonRepeatedChar(str).Print(); // Retrun the index
+            #endregion
+
         }
     }
 }
+

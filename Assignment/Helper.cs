@@ -12,6 +12,15 @@ namespace Assignment
 {
     internal static class Helper
     {
+        public static void Print<T>(this T value) => Console.WriteLine(value);
+        public static void Print<T>(this IEnumerable<T> values) where T : IEnumerable
+        {
+            foreach (T item in values) Console.WriteLine(item);
+        }
+        public static void Print<T>(this List<T> values)
+        {
+            foreach (T item in values) Console.WriteLine(item);
+        }
         public static ArrayList Reverce(ref ArrayList arrayList)
         {
             #region solution using tempArray
@@ -38,14 +47,6 @@ namespace Assignment
             }
             return arrayList;
         }
-        public static void Print<T>( this IEnumerable<T> values) where T : IEnumerable
-        {
-            foreach (T item in values) Console.WriteLine(item);
-        }
-        public static void Print<T>(this List<T> values)
-        {
-            foreach (T item in values) Console.WriteLine(item);
-        }
         public static List<T> GetEvenNumbersList<T>(List<T> array) where T : INumber<T>/*, IModulusOperators<T, T, T>*/
         {
             List<T> list = new List<T>(array.Count);
@@ -62,5 +63,45 @@ namespace Assignment
         ///     return a % b;
         /// }
 
+        public static int GetNonRepeatedChar(string str)
+        {
+            //string str = "Mohamdad";
+            str = str.ToLower();
+            bool isNonCharRepeated = true;
+            Dictionary<char, int> dictionary = new Dictionary<char, int>();
+            List<int> indexesOfRepeatedChar = new List<int>((int)Math.Ceiling(str.Length / 2f));
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                isNonCharRepeated = dictionary.TryAdd(str[i], i);
+                if (!isNonCharRepeated) indexesOfRepeatedChar.Add(i);
+            }
+            // if we don't have repeated characters
+            if (indexesOfRepeatedChar.Count == 0)
+            {
+                return 0;
+            }
+            // if all char is repeated
+            else if (indexesOfRepeatedChar.Count == indexesOfRepeatedChar.Capacity)
+            {
+                return -1;
+            }
+            // if we have char or more are repeated
+            else if (indexesOfRepeatedChar.Count > 0)
+            {
+                ///  //           4  67
+                ///  // str = "mohamdad"
+                ///  // indexesOfRepeatedChar = [4,6,7]
+                ///  // count = 3
+                ///  // dicitonary = "mohad"
+
+                for (int i = 0; i < indexesOfRepeatedChar.Count; i++)
+                    dictionary.Remove(str[indexesOfRepeatedChar[i]]);
+                
+                return dictionary.Values.ToArray()[0];
+            }
+
+            return -1;
+        }
     }
 }
